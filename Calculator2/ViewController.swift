@@ -16,7 +16,7 @@ class ViewController: UIViewController {
     var currentOperations: Operation?
     
     enum Operation {
-        case add, subtract, multiply, divide, plusMinus, procent, dot
+        case add, subtract, multiply, divide, procent
     }
     
     private var resultLabel: UILabel = {
@@ -45,7 +45,7 @@ class ViewController: UIViewController {
         
         
         
-        let zeroButton = UIButton(frame: CGRect(x: 0, y: holder.frame.size.height-buttonSize, width: buttonSize*2, height: buttonSize))
+        let zeroButton = UIButton(frame: CGRect(x: 0, y: holder.frame.size.height-buttonSize, width: buttonSize*3, height: buttonSize))
         zeroButton.setTitleColor(.black, for: .normal)
         zeroButton.backgroundColor = .white
         zeroButton.setTitle("0", for: .normal)
@@ -107,7 +107,7 @@ class ViewController: UIViewController {
         }
         
         
-        let acButton = UIButton(frame: CGRect(x: 0, y: holder.frame.size.height-(buttonSize*5), width: buttonSize, height: buttonSize))
+        let acButton = UIButton(frame: CGRect(x: 0, y: holder.frame.size.height-(buttonSize*5), width: buttonSize * 2, height: buttonSize))
         acButton.setTitleColor(.black, for: .normal)
         acButton.backgroundColor = .orange
         acButton.setTitle("AC", for: .normal)
@@ -116,67 +116,11 @@ class ViewController: UIViewController {
         acButton.titleLabel?.font = UIFont(name: "Helvetica", size: 35)
         holder.addSubview(acButton)
         
-       /* let plusMinusButton = UIButton(frame: CGRect(x: holder.frame.size.width-(buttonSize*3), y: holder.frame.size.height-(buttonSize*5), width: buttonSize, height: buttonSize))
-        plusMinusButton.setTitleColor(.black, for: .normal)
-        plusMinusButton.backgroundColor = .lightGray
-        plusMinusButton.setTitle("+/-", for: .normal)
-        plusMinusButton.layer.cornerRadius = 0.4 * plusMinusButton.frame.size.height
-        plusMinusButton.layer.borderWidth = 5.0
-        holder.addSubview(plusMinusButton)
+       
         
-        let procentButton = UIButton(frame: CGRect(x: holder.frame.size.width-(buttonSize*2), y: holder.frame.size.height-(buttonSize*5), width: buttonSize, height: buttonSize))
-        procentButton.setTitleColor(.black, for: .normal)
-        procentButton.backgroundColor = .lightGray
-        procentButton.setTitle("%", for: .normal)
-        procentButton.layer.cornerRadius = 0.4 * procentButton.frame.size.height
-        procentButton.layer.borderWidth = 5.0
-        holder.addSubview(procentButton)*/
+        let operations = ["=","+","-","*","/","%"]
         
-        /*let eqButton = UIButton(frame: CGRect(x:holder.frame.size.width-(buttonSize), y: holder.frame.size.height-(buttonSize), width: buttonSize, height: buttonSize))
-        eqButton.setTitleColor(.white, for: .normal)
-        eqButton.backgroundColor = .blue
-        eqButton.setTitle("=", for: .normal)
-        eqButton.layer.cornerRadius = 0.4 * eqButton.frame.size.height
-        eqButton.layer.borderWidth = 5.0
-        holder.addSubview(eqButton)
-        
-        let plusButton = UIButton(frame: CGRect(x:holder.frame.size.width-(buttonSize), y: holder.frame.size.height-(buttonSize*2), width: buttonSize, height: buttonSize))
-        plusButton.setTitleColor(.white, for: .normal)
-        plusButton.backgroundColor = .blue
-        plusButton.setTitle("+", for: .normal)
-        plusButton.layer.cornerRadius = 0.4 * plusButton.frame.size.height
-        plusButton.layer.borderWidth = 5.0
-        //plusButton.tag = x + 1
-        plusButton.addTarget(self, action: #selector(operationPressed(_:)), for: .touchUpInside)
-        holder.addSubview(plusButton)
-        
-        let minusButton = UIButton(frame: CGRect(x:holder.frame.size.width-(buttonSize), y: holder.frame.size.height-(buttonSize*3), width: buttonSize, height: buttonSize))
-        minusButton.setTitleColor(.white, for: .normal)
-        minusButton.backgroundColor = .blue
-        minusButton.setTitle("-", for: .normal)
-        minusButton.layer.cornerRadius = 0.4 * minusButton.frame.size.height
-        minusButton.layer.borderWidth = 5.0
-        holder.addSubview(minusButton)
-        
-        let multiplyButton = UIButton(frame: CGRect(x:holder.frame.size.width-(buttonSize), y: holder.frame.size.height-(buttonSize*4), width: buttonSize, height: buttonSize))
-        multiplyButton.setTitleColor(.white, for: .normal)
-        multiplyButton.backgroundColor = .blue
-        multiplyButton.setTitle("×", for: .normal)
-        multiplyButton.layer.cornerRadius = 0.4 * multiplyButton.frame.size.height
-        multiplyButton.layer.borderWidth = 5.0
-        holder.addSubview(multiplyButton)
-        
-        let divButton = UIButton(frame: CGRect(x:holder.frame.size.width-(buttonSize), y: holder.frame.size.height-(buttonSize*5), width: buttonSize, height: buttonSize))
-        divButton.setTitleColor(.white, for: .normal)
-        divButton.backgroundColor = .blue
-        divButton.setTitle("÷", for: .normal)
-        divButton.layer.cornerRadius = 0.4 * divButton.frame.size.height
-        divButton.layer.borderWidth = 5.0
-        holder.addSubview(divButton)*/
-        
-        let operations = ["=","+","-","*","/","+/-","%",","]
-        
-        for x in 0..<8 {
+        for x in 0..<6 {
             if x < 5 {
             let button4 = UIButton(frame: CGRect(x: buttonSize * 3, y: holder.frame.size.height-(buttonSize * CGFloat(x + 1)), width: buttonSize, height: buttonSize))
                 button4.setTitleColor(.white, for: .normal)
@@ -189,39 +133,14 @@ class ViewController: UIViewController {
                 button4.addTarget(self, action: #selector(operationPressed(_:)), for: .touchUpInside)
             }
             else if x == 5 {
-                let button4 = UIButton(frame: CGRect(x: holder.frame.size.width-(buttonSize*3), y: holder.frame.size.height-(buttonSize*5), width: buttonSize, height: buttonSize))
-                button4.setTitleColor(.black, for: .normal)
-                button4.backgroundColor = .lightGray
-                button4.setTitle("+/-", for: .normal)
-                button4.layer.cornerRadius = 0.4 * button4.frame.size.height
-                button4.layer.borderWidth = 5.0
-                button4.titleLabel?.font = UIFont(name: "Helvetica", size: 35)
-                holder.addSubview(button4)
-                button4.tag = x + 1
-                button4.addTarget(self, action: #selector(operationPressed(_:)), for: .touchUpInside)
-                
-            }
-            else if x == 6 {
                 let button4 = UIButton(frame: CGRect(x: holder.frame.size.width-(buttonSize*2), y: holder.frame.size.height-(buttonSize*5), width: buttonSize, height: buttonSize))
                 button4.setTitleColor(.black, for: .normal)
-                button4.backgroundColor = .lightGray
+                button4.backgroundColor = .orange
                 button4.setTitle("%", for: .normal)
                 button4.layer.cornerRadius = 0.4 * button4.frame.size.height
                 button4.layer.borderWidth = 5.0
                 button4.titleLabel?.font = UIFont(name: "Helvetica", size: 35)
                 holder.addSubview(button4)
-                button4.tag = x + 1
-                button4.addTarget(self, action: #selector(operationPressed(_:)), for: .touchUpInside)
-            }
-            else if x == 7 {
-                let button4 = UIButton(frame: CGRect(x: holder.frame.size.width-(buttonSize*2), y: holder.frame.size.height-buttonSize, width: buttonSize, height: buttonSize))
-                button4.setTitleColor(.black, for: .normal)
-                button4.backgroundColor = .lightGray
-                button4.setTitle(",", for: .normal)
-                button4.layer.cornerRadius = 0.4 * button4.frame.size.height
-                button4.layer.borderWidth = 5.0
-                holder.addSubview(button4)
-                button4.titleLabel?.font = UIFont(name: "Helvetica", size: 35)
                 button4.tag = x + 1
                 button4.addTarget(self, action: #selector(operationPressed(_:)), for: .touchUpInside)
             }
@@ -234,10 +153,9 @@ class ViewController: UIViewController {
         holder.addSubview(resultLabel)
         
         
-        //Actions
-        
+  
         acButton.addTarget(self, action: #selector(clearResult), for: .touchUpInside)
-        //plusMinusButton.addTarget(self, action: #selector(changeResult), for: .touchUpInside)
+      
     }
     
     
@@ -249,15 +167,7 @@ class ViewController: UIViewController {
         firstNumber = 0
     }
     
-    /*@objc func zeroTapped() {
-        
-        if resultLabel.text != "0" {
-            if let text = resultLabel.text {
-                resultLabel.text = "\(text)\(0)"
-                
-            }
-        }
-    }*/
+ 
     
     @objc func numberPressed(_ sender: UIButton) {
         let tag = sender.tag - 1
@@ -301,23 +211,14 @@ class ViewController: UIViewController {
                     resultLabel.text = "\(result)"
                     break
                 case .divide:
-                    let result = firstNumber / secondNumber
-                    resultLabel.text = "\(result)"
-                    break
-                case .plusMinus:
-                    let result = firstNumber * (-1)
+                    let result = Float(firstNumber) / Float(secondNumber)
                     resultLabel.text = "\(result)"
                     break
                 case .procent:
-                    let result = Float(firstNumber / 100)
-                    resultLabel.text = "\(result)"
-                    break
-                case .dot:
-                    let result = (String(firstNumber))+(",")+(String(secondNumber))
+                    let result = (Float(firstNumber) / Float(secondNumber)) * 100
                     resultLabel.text = "\(result)"
                     break
                     
-                
                 }
             }
         }
@@ -334,14 +235,9 @@ class ViewController: UIViewController {
            currentOperations = .divide
         }
         else if tag == 6{
-            currentOperations = .plusMinus
-        }
-        else if tag == 7{
             currentOperations = .procent
         }
-        else if tag == 8{
-            currentOperations = .dot
-        }
+        
     }
     
 }
