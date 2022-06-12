@@ -57,16 +57,7 @@ class ViewController: UIViewController {
         zeroButton.addTarget(self, action: #selector(numberPressed(_:)), for: .touchUpInside)
         holder.addSubview(zeroButton)
         
-        /*let dotButton = UIButton(frame: CGRect(x: holder.frame.size.width-(buttonSize*2), y: holder.frame.size.height-buttonSize, width: buttonSize, height: buttonSize))
-        dotButton.setTitleColor(.black, for: .normal)
-        dotButton.backgroundColor = .white
-        dotButton.setTitle(".", for: .normal)
-        dotButton.layer.cornerRadius = 0.4 * dotButton.frame.size.height
-        dotButton.layer.borderWidth = 5.0
-        dotButton.addTarget(self, action: #selector(numberPressed(_:)), for: .touchUpInside)
-        holder.addSubview(dotButton)*/
-        
-        
+    
         for x in 0..<3 {
             let button1 = UIButton(frame: CGRect(x: buttonSize * CGFloat(x), y: holder.frame.size.height-(buttonSize*2), width: buttonSize, height: buttonSize))
             button1.setTitleColor(.black, for: .normal)
